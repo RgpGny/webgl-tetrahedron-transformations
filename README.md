@@ -7,8 +7,8 @@ A WebGL-based interactive 3D application that renders a colorful tetrahedron wit
 **Course:** Computer Graphics  
 **Assignment:** Homework 2  
 **Authors:** 
-- Ragıp Günay (200316007)
-- Duygu Kamalak (200316046)
+- Ragıp Günay : ragipgunay09@gmail.com
+- Duygu Kamalak : duygukamaalak@gmail.com
 
 ## 🎯 Features
 
