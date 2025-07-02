@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebGL Tetrahedron Transformations</title>
+    <script type="text/javascript" src="../Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../Common/initShaders.js"></script>
+    <script type="text/javascript" src="../Common/MV.js"></script>
+    <style>
+        body {
+            background-color: powderblue;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', serif; 
+            font-size: 16px; 
+        }
+        canvas {
+            display: block;
+            border: 1px solid black;
+        }
+        table {
+            width: 100%;
+            height: 512px; 
+        }
+        #controls {
+            padding-top: 100px; 
+        }
+        #controls div, #controls input, #controls button {
+            font-size: 16px; 
+        }
+        #controls div {
+            margin-bottom: 10px; 
+        }
+        .label-bold {
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2" style="text-align: left; font-weight: bold;">
+                Ragıp Günay, 200316007, Duygu Kamalak, 200316046
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top; width: 512px;">
+                <canvas id="gl-canvas" width="512" height="512">
+                    Oops... Your browser doesn't support the HTML5 canvas element.
+                </canvas>
+            </td>
+            <td id="controls" style="vertical-align: top;">
+                <div class="label-bold">---- Controls ----</div>
+                <div class="label-bold">Translations</div>
+                <div>Translate X: -1<input id="posX" type="range" min="-1" max="1" step="0.1" value="0">1</div>
+                <div>Translate Y: -1<input id="posY" type="range" min="-1" max="1" step="0.1" value="0">1</div>
+                <div class="label-bold">Rotations</div>
+                <div>Rotation X: -90<input id="rotX" type="range" min="-90" max="90" step="1" value="0">90</div>
+                <div>Rotation Y: -90<input id="rotY" type="range" min="-90" max="90" step="1" value="0">90</div>
+                <div>Rotation Z: -90<input id="rotZ" type="range" min="-90" max="90" step="1" value="0">90</div>
+                <div class="label-bold">Scaling</div>
+                <div>Scale X: -2<input id="scaleX" type="range" min="-2" max="2" step="0.1" value="1">2</div>
+                <div>Scale Y: -2<input id="scaleY" type="range" min="-2" max="2" step="0.1" value="1">2</div>
+                <button id="ResetButton">Reset</button>
+            </td>
+        </tr>
+    </table>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+    attribute vec4 vColor;
+    varying vec4 fColor;
+    uniform mat4 uModelViewMatrix;
+
+    void main() {
+        fColor = vColor;
+        gl_Position = uModelViewMatrix * vPosition;
+    }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec4 fColor;
+
+    void main() {
+        gl_FragColor = fColor;
+    }
+    </script>
+
+    <script type="text/javascript" src="tetrahedron.js"></script>
+</body>
+</html>
+
